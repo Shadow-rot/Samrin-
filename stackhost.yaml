@@ -1,0 +1,12 @@
+user:
+  name: shadow 
+  github: shadow-rot
+
+python_version: "3.11"
+
+commands:
+  build:
+    - "pip install -r requirements.txt"
+  
+  start:
+    - "python3 copyright.py"
