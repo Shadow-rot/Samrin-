@@ -1,4 +1,4 @@
-# stackhost.yaml
+# stackhost.yaml 
 user:
   name: shadow 
   github: shadow-rot
@@ -8,16 +8,17 @@ python_version: "3.10.6"
 
 commands:
   build:
-    - "apt update && apt upgrade -y"
-    - "apt install git gcc python3-dev netcat -y"
-    - "pip install pip==22 setuptools ez_setup"
+    - "python -m pip install --upgrade pip"
+    - "pip install setuptools ez_setup"
     - "pip install -r requirements.txt"
   package:
-    - "COPY . /app"
-    - "WORKDIR /app"
+    - "git"
+    - "gcc"
+    - "python3-dev"
+    - "netcat"
   start:
-    - "chmod +x /app/start.sh"
-    - "/bin/bash /app/start.sh"
+    - "chmod +x ./start.sh"
+    - "bash ./start.sh"
 
 env:
   - "ENVIRONMENT=production"
