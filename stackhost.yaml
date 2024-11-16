@@ -1,12 +1,23 @@
+# stackhost.yaml
 user:
   name: shadow 
   github: shadow-rot
 
-python_version: "3.11"
+language: "python"
+python_version: "3.10.6"
 
 commands:
   build:
+    - "apt update && apt upgrade -y"
+    - "apt install git gcc python3-dev netcat -y"
+    - "pip install pip==22 setuptools ez_setup"
     - "pip install -r requirements.txt"
-  
+  package:
+    - "COPY . /app"
+    - "WORKDIR /app"
   start:
-    - "python3 copyright.py"
+    - "chmod +x /app/start.sh"
+    - "/bin/bash /app/start.sh"
+
+env:
+  - "ENVIRONMENT=production"
